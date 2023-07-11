@@ -26,7 +26,7 @@ Blog-app is a blog website that shows a list of posts and allows visitors to com
 <details><summary>Client</summary>
 <ul>
   <li><a href="https://html.com/">HTML</a></li>
-  <li><a https://developer.mozilla.org/en-US/docs/Web/CSS">CSS</a></li>
+  <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS">CSS</a></li>
 </ul>
 </details>
 <details><summary>Backend</summary>
