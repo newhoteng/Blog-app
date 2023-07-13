@@ -4,7 +4,5 @@ class User < ApplicationRecord
   has_many :comments
 
   # Returns the 3 most recent posts for a given user
-  scope :recent_three_posts, lambda { |user_id|
-                               joins(:posts).where('users.id = ?', user_id).order('posts.created_at DESC').limit(3)
-                             }
+  scope :recent_three_posts, ->(user_id) { find(user_id).posts.order('posts.created_at DESC').limit(3) }
 end
