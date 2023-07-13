@@ -4,10 +4,9 @@ class Post < ApplicationRecord
   has_many :comments
 
   # Updates the posts counter for a user
-  scope :update_posts_counter, lambda { |user_id|
-                                 posts_for_user = where('author_id = ?', user_id)
+  scope :update_posts_counter, lambda { |user|
+                                 posts_for_user = where('author_id = ?', user.id)
                                  total_posts = posts_for_user.count
-                                 user = posts_for_user.first.user
                                  user.update(posts_counter: total_posts)
                                }
 
