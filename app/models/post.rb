@@ -11,5 +11,5 @@ class Post < ApplicationRecord
                                }
 
   # Returns the 5 most recent comments for a given post
-  scope :recent_five_comments, ->(post_id) { find(post_id).comments.order('comments.created_at DESC').limit(5) }
+  scope :recent_five_comments, ->(post) { find(post.id).comments.order('comments.created_at DESC').limit(5) }
 end
