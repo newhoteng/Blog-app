@@ -3,13 +3,15 @@ class Post < ApplicationRecord
   has_many :likes
   has_many :comments
 
+  after_save :update_post_counter
+
   # Updates the posts counter for a user
-  scope :update_posts_counter, lambda { |user|
-                                 posts_for_user = where('author_id = ?', user.id)
-                                 total_posts = posts_for_user.count
-                                 user.update(posts_counter: total_posts)
-                               }
+  def update_post_counter
+    user.increment!(:posts_counter)
+  end
 
   # Returns the 5 most recent comments for a given post
-  scope :recent_five_comments, ->(post) { find(post.id).comments.order('comments.created_at DESC').limit(5) }
+  def recent_post
+    posts.order('created_at Desc').limit(5)
+  end
 end
