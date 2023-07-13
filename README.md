@@ -6,7 +6,6 @@
   - [🛠️ Built With](#built-with)
     - [Tech Stack](#tech-stack)
     - [Key Features](#key-features)
-  - [🚀 Live Demo](#live-demo)
 - [💻 Getting Started](#getting-started)
   - [Prerequisites](#prerequisites)
   - [Setup](#setup)
@@ -39,12 +38,6 @@ Blog-app is a blog website that shows a list of posts and allows visitors to com
   - Lists of posts
   - Ability to like a post
   - Ability to comment on a post
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-## :rocket: Live Demo <a name="live-demo"></a>
-- Pending
-<!-- [Metrics](https://metrics-59av.onrender.com/) -->
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
