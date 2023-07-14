@@ -10,7 +10,7 @@ RSpec.describe Post, type: :model do
   end
 
   describe 'validations' do
-    subject { Post.new(author_id: 1, title: 'Hello', text: 'This is my first post')}
+    subject { Post.new(author_id: 1, title: 'Hello', text: 'This is my first post') }
 
     it 'title should be present' do
       subject.title = nil
@@ -28,16 +28,15 @@ RSpec.describe Post, type: :model do
   describe '#recent_comments method' do
     let(:user) { create(:user) }
     it 'it returns the last 5 comments of a user' do
-
       user = User.create(name: 'Harriet', photo: 'https://unsplash.com/photos/F_-0BxGuVvo', bio: 'Teacher from Mexico.')
       post = Post.create(author_id: user.id, title: 'Hello', text: 'This is my first post')
-      
+
       first_comment = Comment.create(user_id: user.id, post_id: post.id, text: 'text')
-      second_comment = Comment.create(user_id: user.id, post_id: post.id, text: 'text')
-      third_comment = Comment.create(user_id: user.id, post_id: post.id, text: 'text')
-      fourth_comment = Comment.create(user_id: user.id, post_id: post.id, text: 'text')
-      fifth_comment = Comment.create(user_id: user.id, post_id: post.id, text: 'text')
-      sixth_comment = Comment.create(user_id: user.id, post_id: post.id, text: 'text')
+      Comment.create(user_id: user.id, post_id: post.id, text: 'text')
+      Comment.create(user_id: user.id, post_id: post.id, text: 'text')
+      Comment.create(user_id: user.id, post_id: post.id, text: 'text')
+      Comment.create(user_id: user.id, post_id: post.id, text: 'text')
+      Comment.create(user_id: user.id, post_id: post.id, text: 'text')
 
       recent_comments = post.recent_comments
 

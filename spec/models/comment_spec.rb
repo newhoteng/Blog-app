@@ -11,9 +11,10 @@ RSpec.describe Comment, type: :model do
   describe '#update_comments_counter method' do
     let(:post) { create(:post) }
     it 'it increments the comments_counter for a post' do
-      post = Post.create(author_id: 1, title: 'Hello', text: 'This is my first post', likes_counter: 0, comments_counter: 1)
+      post = Post.create(author_id: 1, title: 'Hello', text: 'This is my first post', likes_counter: 0,
+                         comments_counter: 1)
       Comment.create(user_id: 1, post_id: post.id, text: 'text')
-  
+
       expect(post.comments_counter).to eql 1
     end
   end
