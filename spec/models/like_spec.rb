@@ -10,7 +10,7 @@ RSpec.describe Like, type: :model do
 
   describe '#update_likes_counter method' do
     let(:post) { create(:post) }
-    it 'it returns the last 5 comments of a user' do
+    it 'it increments the likes_counter of a post' do
       post = Post.create(author_id: 1, title: 'Hello', text: 'This is my first post', likes_counter: 1)
       Like.create(user_id: 1, post_id: post.id)
 
