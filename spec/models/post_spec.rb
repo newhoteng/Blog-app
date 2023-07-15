@@ -10,12 +10,26 @@ RSpec.describe Post, type: :model do
   end
 
   describe 'validations' do
-    subject { Post.new(author_id: 1, title: 'Hello', text: 'This is my first post') }
+    user = User.create(name: 'Harriet')
+    subject { Post.new(author_id: user.id, title: 'Hello', text: 'This is my first post') }
+
+    before { subject.save }
 
     it 'title should be present' do
       subject.title = nil
       expect(subject).to_not be_valid
       expect(subject.errors[:title]).to include("can't be blank")
+    end
+
+    it 'title should not be more than 250 characters' do
+      subject.title = 't' * 251
+      expect(subject).to_not be_valid
+      expect(subject.errors[:title]).to include("250 characters is the maximun allowed")
+    end
+
+    it 'title should be 250 characters or less' do
+      subject.title = 't' * 250
+      expect(subject).to be_valid
     end
 
     it 'comments_counter should be greater than or equal to zero' do
