@@ -24,7 +24,7 @@ RSpec.describe Post, type: :model do
     it 'title should not be more than 250 characters' do
       subject.title = 't' * 251
       expect(subject).to_not be_valid
-      expect(subject.errors[:title]).to include("250 characters is the maximun allowed")
+      expect(subject.errors[:title]).to include('250 characters is the maximun allowed')
     end
 
     it 'title should be 250 characters or less' do
