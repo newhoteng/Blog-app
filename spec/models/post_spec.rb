@@ -48,7 +48,7 @@ RSpec.describe Post, type: :model do
     it 'it increments the posts_counter of a user' do
       user = User.create(name: 'Doe', photo: 'https://unsplash.com/photos/F_-0BxGuVvo',
                          bio: 'Teacher from Mexico.')
-      
+
       expect(user.posts_counter).to eql 0
 
       Post.create(author_id: user.id, title: 'Hello', text: 'Text')
