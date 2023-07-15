@@ -31,13 +31,14 @@ RSpec.describe User, type: :model do
       user = User.create(name: 'Harriet', photo: 'https://unsplash.com/photos/F_-0BxGuVvo', bio: 'Teacher from Mexico.')
 
       first_post = Post.create(author_id: user.id, title: 'Hello', text: 'This is my first post')
-      Post.create(author_id: user.id, title: 'Happy', text: 'This is my second post')
-      Post.create(author_id: user.id, title: 'Sad', text: 'This is my third post')
-      Post.create(author_id: user.id, title: 'Joy', text: 'This is my fourth post')
+      second_post = Post.create(author_id: user.id, title: 'Happy', text: 'This is my second post')
+      third_post = Post.create(author_id: user.id, title: 'Sad', text: 'This is my third post')
+      fourth_post = Post.create(author_id: user.id, title: 'Joy', text: 'This is my fourth post')
 
       recent_posts = user.recent_three_posts
 
       expect(recent_posts).to_not include(first_post)
+      expect(recent_posts).to include(fourth_post, third_post, second_post)
     end
   end
 end

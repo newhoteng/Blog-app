@@ -26,32 +26,38 @@ RSpec.describe Post, type: :model do
   end
 
   describe '#recent_comments method' do
-    let(:user) { create(:user) }
     it 'it returns the last 5 comments of a post' do
       user = User.create(name: 'Harriet', photo: 'https://unsplash.com/photos/F_-0BxGuVvo', bio: 'Teacher from Mexico.')
       post = Post.create(author_id: user.id, title: 'Hello', text: 'This is my first post')
 
       first_comment = Comment.create(user_id: user.id, post_id: post.id, text: 'text')
-      Comment.create(user_id: user.id, post_id: post.id, text: 'text')
-      Comment.create(user_id: user.id, post_id: post.id, text: 'text')
-      Comment.create(user_id: user.id, post_id: post.id, text: 'text')
-      Comment.create(user_id: user.id, post_id: post.id, text: 'text')
-      Comment.create(user_id: user.id, post_id: post.id, text: 'text')
+      second_comment = Comment.create(user_id: user.id, post_id: post.id, text: 'text')
+      third_comment = Comment.create(user_id: user.id, post_id: post.id, text: 'text')
+      fourth_comment = Comment.create(user_id: user.id, post_id: post.id, text: 'text')
+      fifth_comment = Comment.create(user_id: user.id, post_id: post.id, text: 'text')
+      sixth_comment = Comment.create(user_id: user.id, post_id: post.id, text: 'text')
 
       recent_comments = post.recent_comments
 
       expect(recent_comments).to_not include(first_comment)
+      expect(recent_comments).to include(sixth_comment, fifth_comment, fourth_comment, third_comment, second_comment)
     end
   end
 
   describe '#update_posts_counter method' do
-    let(:user) { create(:user) }
     it 'it increments the posts_counter of a user' do
-      user = User.create(name: 'Harriet', photo: 'https://unsplash.com/photos/F_-0BxGuVvo',
-                         bio: 'Teacher from Mexico.', posts_counter: 1)
-      Post.create(author_id: user.id, title: 'Hello', text: 'This is my first post')
+      user = User.create(name: 'Doe', photo: 'https://unsplash.com/photos/F_-0BxGuVvo',
+                         bio: 'Teacher from Mexico.')
+      
+      expect(user.posts_counter).to eql 0
 
+      Post.create(author_id: user.id, title: 'Hello', text: 'Text')
+      user.reload
       expect(user.posts_counter).to eql 1
+
+      Post.create(author_id: user.id, title: 'MS', text: 'Some text')
+      user.reload
+      expect(user.posts_counter).to eql 2
     end
   end
 end
