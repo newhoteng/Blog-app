@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Post, type: :model do
   describe 'associations' do
     it 'should have correct associations' do
-      expect(Post.reflect_on_association(:user).macro).to eq(:belongs_to)
+      expect(Post.reflect_on_association(:author).macro).to eq(:belongs_to)
       expect(Post.reflect_on_association(:comments).macro).to eq(:has_many)
       expect(Post.reflect_on_association(:likes).macro).to eq(:has_many)
     end
