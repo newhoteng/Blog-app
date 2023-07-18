@@ -55,6 +55,7 @@ RSpec.describe Post, type: :model do
 
       expect(recent_comments).to_not include(first_comment)
       expect(recent_comments).to include(sixth_comment, fifth_comment, fourth_comment, third_comment, second_comment)
+      expect(recent_comments.count).to eq(5)
     end
   end
 
