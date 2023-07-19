@@ -1,1 +1,12 @@
-<h1>Here are posts of a specific user</h1>
+<div class="posts-index">
+  <%= render 'shared/user', user: @user %>
+  <% @posts.each do |post| %>
+    <%=link_to user_post_path(@user, post) do %>
+      <%= render 'shared/post', post: post %>
+    <% end %>
+    <% post.recent_comments.reverse_each do |comment| %>
+      <%= render 'shared/comment', comment: comment %>
+    <% end %>
+  <% end %>
+  <button>Pagination</button>
+</div>
