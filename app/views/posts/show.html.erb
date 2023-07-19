@@ -1,1 +1,12 @@
 <h1>Here are details of a specific post for a specific user</h1>
+<div class="posts-show">
+  <div>
+  <div>Post #<%= @post.id %> by <%= @post.author.name %></div>
+
+  </div>
+  <div>
+    <% @post.comments.each do |comment| %>
+      <%= render 'shared/comment', comment: comment %>
+    <% end %>
+  </div>
+</div>
