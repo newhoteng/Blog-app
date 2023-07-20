@@ -3,6 +3,14 @@
   <% @posts.reverse_each do |post| %>
     <div class="post-details">
       <%= render 'shared/post', post: post %>
+
+      <div class="">
+        <%= link_to "Add Comment", new_user_post_comment_path(@user, post) %>
+        <%= form_with url: user_post_likes_path(post.author.id, post.id) do |form| %>
+          <%= form.submit 'Like' %>
+        <% end %>
+      </div>
+
       <div class="comment-container">
         <% post.recent_comments.reverse_each do |comment| %>
           <%= render 'shared/comment', comment: comment %>

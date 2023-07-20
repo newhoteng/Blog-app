@@ -4,6 +4,9 @@
     <h3>Bio</h3>
     <p><%= @user.bio %></p>
   </div>
+
+  <%= link_to "Add a Post...", new_user_post_path(@user) %>
+
   <% @recent_posts.each do |post| %>
     <%= render 'shared/post', post: post %>
   <% end %>
