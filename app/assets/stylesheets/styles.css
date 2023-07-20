@@ -41,10 +41,64 @@ a {
   text-align: right;
 }
 
-main.user-index {
+main.user-index,
+main.user-show,
+main.post-index,
+main.post-show {
   max-width: 750px;
   margin: 0 auto;
   gap: 1rem;
   display: flex;
   flex-direction: column;
+  padding: 1rem;
+}
+
+.bio {
+  border: 1px solid #3a4a42;
+  border-radius: 5px;
+  padding: 0 1rem;
+}
+
+.post {
+  border: 1px solid #3a4a42;
+  border-radius: 5px;
+  padding: 0 1rem;
+}
+
+.post p:nth-child(3) {
+  text-align: right;
+}
+
+.user-show button {
+  background-color: green;
+  align-self: center;
+  border-radius: 5px;
+  border: none;
+  color: white;
+  padding: 0.5rem;
+}
+
+.post-details {
+  border: 1px solid brown;
+  border-radius: 5px;
+}
+
+.post-index .post:hover {
+  background-color: lightblue;
+}
+
+.comment-container {
+  padding: 0 1rem;
+}
+.post-in-show {
+  border: 1px solid red;
+  border-radius: 5px;
+  padding: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.post-in-show p:nth-child(3) {
+  width: 100%;
 }

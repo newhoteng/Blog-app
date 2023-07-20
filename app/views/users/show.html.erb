@@ -1,6 +1,6 @@
-<div class="users-show">
+<main class="user-show">
   <%= render 'shared/user', user: @user %>
-  <div>
+  <div class="bio">
     <h3>Bio</h3>
     <p><%= @user.bio %></p>
   </div>
@@ -8,5 +8,5 @@
     <%= render 'shared/post', post: post %>
   <% end %>
   <button> <%= link_to 'See all posts', user_posts_path(@user) %></button>
-</div>
+</main>
 
