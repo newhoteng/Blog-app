@@ -2,9 +2,7 @@
   <%= render 'shared/user', user: @user %>
   <% @posts.reverse_each do |post| %>
     <div class="post-details">
-      <%=link_to user_post_path(@user, post) do %>
-        <%= render 'shared/post', post: post %>
-      <% end %>
+      <%= render 'shared/post', post: post %>
       <div class="comment-container">
         <% post.recent_comments.reverse_each do |comment| %>
           <%= render 'shared/comment', comment: comment %>
