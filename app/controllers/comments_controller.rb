@@ -11,9 +11,10 @@ class CommentsController < ApplicationController
     @comment = @post.comments.new(comment_params)
     @comment.author = @user
     if @comment.save
-      redirect_to user_post_path(@user, @post), notice: 'Comment created!'
+      flash[:success] = "Comment created successfully"
+      redirect_to user_post_path(@user, @post)
     else
-      flash.now[:errors] = 'Invalid comment!'
+      flash.now[:errors] = 'Error: Comment could not be saved'
       render :new
     end
   end
