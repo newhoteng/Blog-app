@@ -53,6 +53,8 @@ group :development, :test do
   gem 'debug', platforms: %i[mri mingw x64_mingw]
   # Add RSpec gem for rails (self added)
   gem 'rspec-rails'
+
+  # gem 'chromedriver-helper'
 end
 
 group :development do
