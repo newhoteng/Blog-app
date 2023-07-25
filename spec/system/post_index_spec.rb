@@ -1,13 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe 'Post index page', type: :feature do
-
   user = User.create(name: 'Harriet', photo: 'https://unsplash.com/photos/F_-0BxGuVvo', bio: 'Teacher from Mexico.')
   commenter = User.create(name: 'Tom', photo: 'https://unsplash.com/photos/F_-0BxGuVvo', bio: 'Teacher from Ghana.')
   first_post = Post.create(author_id: user.id, title: 'Hello', text: 'This is my first post')
   Post.create(author_id: user.id, title: 'Hello', text: 'This is my second post')
   Post.create(author_id: user.id, title: 'Hello', text: 'This is my third post')
-  comment = Comment.create(user_id: commenter.id, post_id: first_post.id, text: 'comment')
+  Comment.create(user_id: commenter.id, post_id: first_post.id, text: 'comment')
   Comment.create(user_id: commenter.id, post_id: first_post.id, text: 'another comment')
 
   before :each do
@@ -38,7 +37,7 @@ RSpec.describe 'Post index page', type: :feature do
       end
     end
 
-    it "should see first comments on a post" do
+    it 'should see first comments on a post' do
       user.posts.each do |post|
         recent_comments = post.recent_comments
         recent_comments.each do |comment|
@@ -47,29 +46,22 @@ RSpec.describe 'Post index page', type: :feature do
       end
     end
 
-    it "should see how many comments a post has" do
+    it 'should see how many comments a post has' do
       user.posts.each do |post|
         expect(page).to have_content("Comments: #{post.comments.count}")
       end
     end
 
-    it "should see how many likes a post has" do
+    it 'should see how many likes a post has' do
       user.posts.each do |post|
         expect(page).to have_content("Likes: #{post.likes.count}")
       end
     end
-
-    # modify
-    # it "should see pagination" do
-    #   user_posts.each do |post|
-    #     expect(page).to have_content("Likes: #{post.likes.count}")
-    #   end
-    # end
   end
 
   describe 'clicking on post' do
-    it "redirects to posts show page" do
-      click_link(:href => user_post_path(user, first_post))
+    it 'redirects to posts show page' do
+      click_link(href: user_post_path(user, first_post))
       expect(page).to have_current_path(user_post_path(user, first_post))
     end
   end

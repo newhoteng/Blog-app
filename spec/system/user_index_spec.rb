@@ -6,7 +6,7 @@ RSpec.describe 'User index page', type: :feature do
   User.create(name: 'Jayden', photo: 'https://unsplash.com/photos/F_-0BxGuVvo', bio: 'Teacher from Mexico.')
 
   users = User.all
-  
+
   before :each do
     visit users_path
   end
@@ -27,7 +27,7 @@ RSpec.describe 'User index page', type: :feature do
   describe 'clicking on user link feature' do
     it 'redirects to show page' do
       @user = User.first
-      click_link(:href => user_path(@user))
+      click_link(href: user_path(@user))
       expect(page).to have_current_path(user_path(@user))
     end
   end
