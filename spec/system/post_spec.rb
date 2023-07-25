@@ -65,7 +65,12 @@ RSpec.describe 'Post', type: :feature do
     end
 
     describe 'clicking on post' do
-      #contents
+      it "redirects to posts show page" do
+        user_posts.each do |post|
+          click_link(:href => user_post_path(user, post))
+          expect(page).to have_current_path(user_post_path(user, post))
+        end
+      end
     end
   end
 end
