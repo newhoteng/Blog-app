@@ -105,6 +105,10 @@ To run tests, run the following command:
 - Twitter: [@twitterhandle](https://twitter.com/HarrietOteng1)
 - LinkedIn: [LinkedIn](https://www.linkedin.com/in/harriet-oteng-75554666/)
 
+👤 **Naji Ali**
+- GitHub: [Naji ali](https://github.com/naji-97)
+- LinkedIn: [Naji ali](https://linkedin.com/in/abdennaji)
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## :telescope: Future Features <a name="future-features"></a>

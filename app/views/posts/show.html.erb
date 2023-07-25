@@ -1,6 +1,6 @@
 <main class="post-show">
   <div class="post-in-show">
-    <div>Post #<%= @post.id %> by <%= @post.author.name %></div>
+    <div><%= @post.title %> by <%= @post.author.name %></div>
     <div>Comments: <%= @post.comments_counter %>, Likes: <%= @post.likes_counter %></div>
     <p><%= @post.text %></p>
   </div>

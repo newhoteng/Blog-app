@@ -12,7 +12,7 @@
       </div>
 
       <div class="comment-container">
-        <% post.comments.reverse_each do |comment| %>
+        <% post.recent_comments.reverse_each do |comment| %>
           <%= render 'shared/comment', comment: comment %>
         <% end %>
       </div>
