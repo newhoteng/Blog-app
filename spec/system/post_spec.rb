@@ -34,6 +34,34 @@ RSpec.describe 'Post', type: :feature do
           expect(page).to have_content post.text
         end
       end
+      # modify
+      it "should see first comments on a post" do
+        user_posts.each do |post|
+          comment_on_post = post.comments
+          comment_on_post.each do |comment|
+            expect(page).to have_content("#{comment.author}: #{comment.text}")
+          end
+        end
+      end
+
+      it "should see how many comments a post has" do
+        user_posts.each do |post|
+          expect(page).to have_content("Comments: #{post.comments.count}")
+        end
+      end
+
+      it "should see how many likes a post has" do
+        user_posts.each do |post|
+          expect(page).to have_content("Likes: #{post.likes.count}")
+        end
+      end
+
+      # modify
+      it "should see pagination" do
+        user_posts.each do |post|
+          expect(page).to have_content("Likes: #{post.likes.count}")
+        end
+      end
     end
 
     describe 'clicking on post' do
