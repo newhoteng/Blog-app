@@ -100,3 +100,13 @@ button {
 .post-in-show p:nth-child(3) {
   width: 100%;
 }
+
+.form-container {
+  min-width: 300px;
+  width: 65%;
+  margin: 0 auto;
+}
+
+.btn {
+  width: 100%;
+}
