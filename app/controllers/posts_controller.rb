@@ -6,6 +6,7 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    @user = User.find(params[:user_id])
   end
 
   def new
@@ -17,7 +18,7 @@ class PostsController < ApplicationController
     @user = current_user
     @post = @user.posts.new(post_params)
     if @post.save
-      redirect_to user_post_path(@user, @post)
+      redirect_to user_posts_path(@user)
     else
       flash.now[:errors] = 'Invalid post!'
       render :new
@@ -25,9 +26,11 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    render json: params
-    # Post.destroy(params[:id])
-    # redirect_to lessons_path
+    @post = Post.find(params[:id])
+    @user = @post.author
+
+    @post.destroy
+    redirect_to user_posts_path(@user), notice: 'Post was successfully deleted'
   end
 
   private
@@ -36,6 +39,3 @@ class PostsController < ApplicationController
     params.require(:post).permit(:title, :text)
   end
 end
-
-# post_delete DELETE /delete/post/:id(.:format)                                                                        posts#destroy
-# comment_delete DELETE /delete/comment/:id(.:format)                                                                     comments#destroy

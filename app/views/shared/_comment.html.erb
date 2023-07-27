@@ -1,4 +1,2 @@
 <p><%= comment.author.name %>: <%= comment.text%></p>
-<% if can? :destroy, comment %>
-  <%= button_to("Delete Comment", method: :delete) %>
-<% end %>
+

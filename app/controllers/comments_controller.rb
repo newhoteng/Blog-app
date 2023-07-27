@@ -20,13 +20,12 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    # @user = User.find(params[:user_id])
-    # @post = Post.find(params[:post_id])
-    # @comment = Comment.find(params[:id])
-    # @comment.destroy
-    render json: params
-    # redirect_to lessons_path
-    # user_post_comment DELETE /users/:user_id/posts/:post_id/comments/:id(.:format)                                             comments#destroy
+    @comment = Comment.find(params[:id])
+    @post = @comment.post
+    @user = @post.author
+
+    @comment.destroy
+    redirect_to user_posts_path(@user), notice: 'Comment was successfully deleted'
   end
 
   private

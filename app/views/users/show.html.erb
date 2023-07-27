@@ -1,6 +1,8 @@
 <main class="user-show">
   <%= button_to("Log Out", destroy_user_session_path, method: :delete) %>
+  <%= button_to("Home", root_path, method: :get) %>
   <%= render 'shared/user', user: @user %>
+  <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %>
   <div class="bio">
     <h3>Bio</h3>
     <p><%= @user.bio %></p>
