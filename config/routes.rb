@@ -10,4 +10,9 @@ Rails.application.routes.draw do
     end
   end
   root "users#index"
+  # delete '/users/:user_id/posts/:id' to: 'posts#destroy', as post_delete
+  # delete '/users/:user_id/post/:id', to: 'posts#destroy', as: :post_delete
+  # delete '/delete/comment/:id', to: 'comments#destroy', as: :comment_delete
+  # delete '/users/:user_id/delete/:id', to: 'posts#destroy'
+  # get '/gossip/:id', to: 'gossip#show', as: :gossip
 end

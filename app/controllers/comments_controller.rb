@@ -19,6 +19,16 @@ class CommentsController < ApplicationController
     end
   end
 
+  def destroy
+    # @user = User.find(params[:user_id])
+    # @post = Post.find(params[:post_id])
+    # @comment = Comment.find(params[:id])
+    # @comment.destroy
+    render json: params
+    # redirect_to lessons_path
+    # user_post_comment DELETE /users/:user_id/posts/:post_id/comments/:id(.:format)                                             comments#destroy
+  end
+
   private
 
   def comment_params

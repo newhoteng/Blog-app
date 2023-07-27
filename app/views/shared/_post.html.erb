@@ -5,3 +5,6 @@
     <p>Comments: <%= post.comments_counter %>, Likes: <%= post.likes_counter %> </p>
   </div>
 <% end %>
+<% if can? :destroy, post %>
+  <%= button_to("Delete Post", method: :delete) %>
+<% end %>

@@ -24,9 +24,18 @@ class PostsController < ApplicationController
     end
   end
 
+  def destroy
+    render json: params
+    # Post.destroy(params[:id])
+    # redirect_to lessons_path
+  end
+
   private
 
   def post_params
     params.require(:post).permit(:title, :text)
   end
 end
+
+# post_delete DELETE /delete/post/:id(.:format)                                                                        posts#destroy
+# comment_delete DELETE /delete/comment/:id(.:format)                                                                     comments#destroy
