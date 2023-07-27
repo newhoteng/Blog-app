@@ -82,3 +82,5 @@ gem 'rails-controller-testing'
 gem 'kaminari'
 
 gem 'devise'
+
+gem 'cancancan'
