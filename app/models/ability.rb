@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class Ability
   include CanCan::Ability
 
@@ -9,9 +7,9 @@ class Ability
     can :delete, Post, author_id: user.id
     can :delete, Comment, user_id: user.id
     # Define abilities for an admin user
-    if user.role == "admin"
-      can :delete, Post
-      can :delete, Comment
-    end
+    return unless user.role == 'admin'
+
+    can :delete, Post
+    can :delete, Comment
   end
 end
