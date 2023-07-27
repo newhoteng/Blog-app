@@ -4,7 +4,9 @@
     <div><%= @post.title %> by <%= @post.author.name %></div>
     <div>Comments: <%= @post.comments_counter %>, Likes: <%= @post.likes_counter %></div>
     <p><%= @post.text %></p>
-     <%= render partial:'shared/delete_button', locals: {model: @post, url: user_post_path(@user, @post)} %>
+    <% if can? :delete, @post %>
+      <%= link_to "Delete", user_post_path(@post), method: :delete, data: { confirm: "Are you sure?" } %>
+    <% end %>
 
   </div>
   <div class="comment-container">
