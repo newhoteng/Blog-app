@@ -1,4 +1,5 @@
 class Api::CommentsController < ApplicationController
+  # GET http://localhost/api/users/:user_id/posts/:post_id/comments
   def index
     @comments = Comment.where(post_id: params[:post_id])
 
@@ -9,6 +10,7 @@ class Api::CommentsController < ApplicationController
     end
   end
 
+  # POST http://localhost/api/users/:user_id/posts/:post_id/comments
   def create
     @user = current_user
     @post = Post.find(params[:post_id])

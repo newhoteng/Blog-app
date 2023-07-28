@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  # To ensure authorization happens on every action added to your controller
+  # check_authorization
   load_and_authorize_resource except: %i[index show]
 
   def index
