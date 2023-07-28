@@ -1,11 +1,16 @@
 require 'rails_helper'
 
 RSpec.describe 'Post show page', type: :feature do
-  user = User.create(name: 'Harriet', photo: 'https://unsplash.com/photos/F_-0BxGuVvo', bio: 'Teacher from Mexico.')
-  post = Post.create(author_id: user.id, title: 'Hello', text: 'This is my first post')
-  comment = Comment.create(user_id: user.id, post_id: post.id, text: 'text')
+  # user = current_user
+  # user = User.create(name: 'Harriet', photo: 'https://unsplash.com/photos/F_-0BxGuVvo', bio: 'Teacher from Mexico.')
+  # post = Post.create(author_id: user.id, title: 'Hello', text: 'This is my first post')
+  # comment = Comment.create(user_id: user.id, post_id: post.id, text: 'text')
 
   before :each do
+    user = User.create(name: 'Harriet', photo: 'https://unsplash.com/photos/F_-0BxGuVvo', bio: 'Teacher from Mexico.')
+    sign_in user, scope: :admin
+    post = Post.create(author_id: user.id, title: 'Hello', text: 'This is my first post')
+    comment = Comment.create(user_id: user.id, post_id: post.id, text: 'text')
     visit user_post_path(user, post)
   end
 

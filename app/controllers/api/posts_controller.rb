@@ -7,7 +7,8 @@ class Api::PostsController < ApplicationController
     @posts = Post.includes(comments: [:author]).where(author_id: params[:user_id])
 
     if @posts
-      render json: @posts.to_json, status: :ok
+      # render json: @posts.to_json, status: :ok
+      render json: @posts.to_json(only: [:id, :title, :text, :comments_counter, :likes_counter])
     else
       render json: { status: 'Error', errors: @posts.errors }
     end

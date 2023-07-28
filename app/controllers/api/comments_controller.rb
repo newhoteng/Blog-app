@@ -4,7 +4,8 @@ class Api::CommentsController < ApplicationController
     @comments = Comment.where(post_id: params[:post_id])
 
     if @comments
-      render json: { status: 'Success', data: @comments }
+      render json: @comments.to_json(only: [:id, :user_id, :text])
+      # render json: { status: 'Success', data: @comments }
     else
       render json: { status: 'Error', data: @comments.errors }
     end
